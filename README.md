@@ -77,26 +77,24 @@ TABELLA DEGLI OPERANDI S3,S2,S1,S0 PER TUTTE LE OPERAZIONI POSSIBILI DELL'ALU:
 
 ------------------------------
 
-# Tabella delle Funzioni Logiche e Operazioni Aritmetiche
-
-| **SELEZIONE** | **M = H** _(Funzioni Logiche)_ | **M = L; Operazioni Aritmetiche**  
-| S3 S2 S1 S0   |                                |**Cn = L (senza riporto)**          | **Cn = H (con riporto)**           |
-|---------------|--------------------------------|------------------------------------|------------------------------------|
-| L  L  L  L    | F = A                          | F = A - 1                          | F = A                              |
-| L  L  L  H    | F = AB                         | F = AB - 1                         | F = AB                             |
-| L  L  H  L    | F = A + B                      | F = AB - 1                         | F = AB                             |
-| L  L  H  H    | F = 1                          | F = -1 (complemento a 2)           | F = 0                              |
-| L  H  L  L    | F = A + B | F = A + (A + B) | F = A + (A + B) + 1 |
-| L  H  L  H    | F = B | F = AB + (A + B) | F = AB + (A + B) + 1 |
-| L  H  H  L    | F = A ⊕ B | F = A - B - 1 | F = A - B |
-| L  H  H  H    | F = A + B | F = A + B | F = A + (A + B) + 1 |
-| H  L  L  L    | F = AB | F = A + (A + B) | F = A + (A + B) + 1 |
-| H  L  L  H    | F = A ⊕ B | F = A + B | F = A + B + 1 |
-| H  L  H  L    | F = B | F = AB + (A + B) | F = AB + (A + B) + 1 |
-| H  L  H  H    | F = A + B | F = (A + B) | F = (A + B) + 1 |
-| H  H  L  L    | F = 0 | F = A + A* | F = A + A + 1 |
-| H  H  L  H    | F = AB | F = AB + A | F = AB + A + 1 |
-| H  H  H  L    | F = AB | F = AB + A | F = AB + A + 1 |
-| H  H  H  H    | F = A | F = A | F = A + 1 |
+| **SELEZIONE** | **M = H** _(Funzioni Logiche)_ | **M = L; Operazioni Aritmetiche** |
+|--------------|--------------------------------|------------------------------------|
+| S3 S2 S1 S0 | **Cn = L (senza riporto)** | **Cn = H (con riporto)** |
+| L  L  L  L  | F = A | F = A - 1 | F = A |
+| L  L  L  H  | F = AB | F = AB - 1 | F = AB |
+| L  L  H  L  | F = A + B | F = AB - 1 | F = AB |
+| L  L  H  H  | F = 1 | F = -1 (complemento a 2) | F = 0 |
+| L  H  L  L  | F = A + B | F = A + (A + B) | F = A + (A + B) + 1 |
+| L  H  L  H  | F = B | F = AB + (A + B) | F = AB + (A + B) + 1 |
+| L  H  H  L  | F = A ⊕ B | F = A - B - 1 | F = A - B |
+| L  H  H  H  | F = A + B | F = A + B | F = A + (A + B) + 1 |
+| H  L  L  L  | F = AB | F = A + (A + B) | F = A + (A + B) + 1 |
+| H  L  L  H  | F = A ⊕ B | F = A + B | F = A + B + 1 |
+| H  L  H  L  | F = B | F = AB + (A + B) | F = AB + (A + B) + 1 |
+| H  L  H  H  | F = A + B | F = (A + B) | F = (A + B) + 1 |
+| H  H  L  L  | F = 0 | F = A + A* | F = A + A + 1 |
+| H  H  L  H  | F = AB | F = AB + A | F = AB + A + 1 |
+| H  H  H  L  | F = AB | F = AB + A | F = AB + A + 1 |
+| H  H  H  H  | F = A | F = A | F = A + 1 |
 
 _\*Ogni bit viene spostato alla posizione più significativa successiva._
