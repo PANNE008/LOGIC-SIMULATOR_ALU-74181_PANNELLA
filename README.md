@@ -1,9 +1,4 @@
-==============================
 GUIDA AL CODICE SIMULAZIONE ALU + REGISTRI 4-BIT
-==============================
-
-AUTORE: [Inserisci il tuo nome]
-DATA: [Inserisci la data]
 
 DESCRIZIONE GENERALE:
 ------------------------------
