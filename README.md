@@ -1,4 +1,5 @@
 GUIDA AL CODICE SIMULAZIONE ALU + REGISTRI 4-BIT
+================================================
 
 DESCRIZIONE GENERALE:
 ------------------------------
