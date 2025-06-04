@@ -1,3 +1,5 @@
+In questo testo sono presenti tutte le funzioni del simulatore:
+
 Ritardo(int cicli):
 Funzione che simula un'attesa tramite loop vuoto.
 
