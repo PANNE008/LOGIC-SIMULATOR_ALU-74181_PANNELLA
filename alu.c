@@ -209,7 +209,7 @@ int M;
         else if (S3==0 && S2==1 && S1_alu==0 && S0_alu==1)
             F = 1-B;
         else if (S3==0 && S2==1 && S1_alu==1 && S0_alu==0)
-            F = (1-A)B+A(1-B);
+            F = (1-A)*B+A*(1-B);
         else if (S3==0 && S2==1 && S1_alu==1 && S0_alu==1)
             F = A+(1-B);
         else if (S3==1 && S2==0 && S1_alu==0 && S0_alu==0)
