@@ -1,14 +1,3 @@
-
-
-Vai ai contenuti
-Utilizzo di Posta di IIS Lagrange con gli screen reader
-
-Conversazioni
- 
-Norme del programma
-Powered by Google
-Ultima attività dell'account: 0 minuti fa
-Dettagli
 #include <stdio.h>
 #include <time.h>
 #include <stdint.h>
@@ -493,5 +482,3 @@ int main() {
 
     return 0;
 }
-ALU.c
-Visualizzazione di ALU.c.
