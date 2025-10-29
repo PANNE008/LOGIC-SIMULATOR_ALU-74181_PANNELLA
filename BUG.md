@@ -1,4 +1,3 @@
-
 ## 🛠️ Bug trovati e risolti
 
 Durante le fasi di test e revisione, sono stati individuati e corretti diversi problemi critici che compromettevano il corretto funzionamento del sistema:
