@@ -1,10 +1,3 @@
-Ecco il contenuto pronto per essere salvato in un file di testo (ad esempio `bug_report_ALU.txt`):
-
-RAPPORTO DETTAGLIATO DEI BUG NEL CODICE ALU (UNITÀ LOGICO-ARITMETICA)
-
-Questo documento identifica e descrive tutti i bug critici, semantici e di progettazione
-presenti nel codice C fornito, che simula un'ALU a 4 e 32 bit ispirata al chip 74181.
-
 --------------------------------------------------------------------------------
 BUG CRITICI (IMPEDISCONO IL CORRETTO FUNZIONAMENTO DELL'ALU)
 --------------------------------------------------------------------------------
@@ -15,7 +8,7 @@ BUG CRITICI (IMPEDISCONO IL CORRETTO FUNZIONAMENTO DELL'ALU)
    - Conseguenza: i valori restituiti per G_out, P_out e i segnali interni (G0-G3, P0-P3)
      sono errati, compromettendo qualsiasi utilizzo per carry lookahead o analisi logica.
 
-2. CONDIZIONE "A_UGUALE_B" TOTALMENTE ERRATA
+2. CONDIZIONE "A_UGUALE_B" ERRATA
    - L'uguaglianza è calcolata come: A_uguale_B = AND_4(F0, F1, F2, F3)
      → ovvero "vero solo se F = 1111".
    - Questo è FALSO per la maggior parte delle operazioni:
