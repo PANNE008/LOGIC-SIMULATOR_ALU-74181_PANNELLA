@@ -1,13 +1,84 @@
- Bug trovati e risolti
+Ecco il contenuto pronto per essere salvato in un file di testo (ad esempio `bug_report_ALU.txt`):
 
-Durante le fasi di test e revisione, sono stati individuati e corretti diversi problemi critici che compromettevano il corretto funzionamento del sistema:
+RAPPORTO DETTAGLIATO DEI BUG NEL CODICE ALU (UNITÀ LOGICO-ARITMETICA)
 
-- Salvataggio errato nei registri: I valori non venivano memorizzati correttamente, causando incoerenze nei dati elaborati.
-- Clear del registro troppo aggressivo: L'operazione di pulizia cancellava anche gli input A e B dell'ALU, impedendo il corretto svolgimento delle operazioni logiche e aritmetiche.
-- Calcoli non conformi alle tabelle di verità: Alcune operazioni logiche restituivano risultati errati, non rispettando le regole fondamentali dell'ALU.
-- Errori nei convertitori: Problemi di conversione tra formati numerici (es. binario-decimale) generavano risultati inattesi.
-- Errori grafici: Alcuni elementi visivi non venivano renderizzati correttamente, compromettendo l'usabilità dell'interfaccia.
+Questo documento identifica e descrive tutti i bug critici, semantici e di progettazione
+presenti nel codice C fornito, che simula un'ALU a 4 e 32 bit ispirata al chip 74181.
 
-Bug attualmente da risolvere
+--------------------------------------------------------------------------------
+BUG CRITICI (IMPEDISCONO IL CORRETTO FUNZIONAMENTO DELL'ALU)
+--------------------------------------------------------------------------------
 
-- Nessun bug noto al momento. Il sistema è stabile e funzionale secondo gli ultimi test effettuati.
+1. LOGICA ERRATA DEI SEGNALI P (PROPAGATE) E G (GENERATE) NELL'ALU_4_BIT
+   - I segnali P e G sono calcolati con espressioni non conformi allo standard del 74181.
+   - Vengono applicate negazioni (NOT) non giustificate.
+   - Conseguenza: i valori restituiti per G_out, P_out e i segnali interni (G0-G3, P0-P3)
+     sono errati, compromettendo qualsiasi utilizzo per carry lookahead o analisi logica.
+
+2. CONDIZIONE "A_UGUALE_B" TOTALMENTE ERRATA
+   - L'uguaglianza è calcolata come: A_uguale_B = AND_4(F0, F1, F2, F3)
+     → ovvero "vero solo se F = 1111".
+   - Questo è FALSO per la maggior parte delle operazioni:
+        • In sottrazione (A - B con Cn=1), A == B produce F = 0000, non 1111.
+        • In operazioni logiche, F = 1111 non implica A == B.
+   - Conseguenza: il flag "A = B" è quasi sempre sbagliato.
+
+3. ALU_32_BIT: BUG EREDITATO PER L'UGUAGLIANZA
+   - La funzione ALU_32_BIT_Corrected calcola Final_A_uguale_B come:
+        "tutti i bit di F sono 1"
+   - Questo eredita e amplifica il bug #2 a 32 bit.
+   - Inoltre, passa erroneamente il puntatore Final_A_uguale_B a ogni chiamata di ALU_4_BIT,
+     sovrascrivendolo 8 volte (solo l'ultimo blocco conta), ma poi lo ignora e usa una
+     logica separata (anch'essa errata).
+
+4. OUTPUT F NON CONFORME ALLE SPECIFICHE DEL 74181
+   - La logica interna per calcolare F0-F3 non rispetta la tabella di verità del 74181.
+   - Esempio di fallimento:
+        A = 0000, B = 0000, S = 0000, M = 1 (logica), Cn = 1
+        → Ci si aspetta F = A = 0000
+        → Il codice può restituire F0 = 1 a causa di NAND01 = NOT(AND(Cn, NOTM))
+   - Molte operazioni aritmetiche e logiche producono risultati incorretti.
+
+--------------------------------------------------------------------------------
+BUG DI PROGETTAZIONE (LIMITANO L'UTILIZZABILITÀ)
+--------------------------------------------------------------------------------
+
+5. SEGNALI G_32 E P_32 NON RAPPRESENTANO IL BLOCCO A 32 BIT
+   - In ALU_32_BIT_Corrected:
+        *Final_G = local_G;  // G dell'ultimo blocco (bit 28-31)
+        *Final_P = local_P;  // P dell'ultimo blocco
+   - Per un vero carry-lookahead a 32 bit, G_32 e P_32 devono essere:
+        G_32 = G7 + P7·G6 + P7·P6·G5 + ... + P7·...·P0·Cn
+        P_32 = P7·P6·...·P0
+   - Conseguenza: impossibile usare G_32/P_32 per ottimizzare il carry.
+
+6. FUNZIONE delay() NON PORTABILE E IMPRECISA
+   - Usa clock(), che misura il tempo CPU, non il tempo reale.
+   - Non tiene conto di CLOCKS_PER_SEC (potrebbe non essere 1000).
+   - Può non funzionare su sistemi in cui il processo è inattivo.
+   - Non critico per la logica, ma inaffidabile.
+
+--------------------------------------------------------------------------------
+ALTRE ANOMALIE
+--------------------------------------------------------------------------------
+
+7. CODICE RIDONDANTE
+   - La funzione convertiBinario4BitInDecimale() è dichiarata ma mai utilizzata.
+
+8. MANCANZA DI VALIDAZIONE DELLE OPERAZIONI
+   - Il programma mostra all'utente una tabella delle operazioni del 74181,
+     ma la logica interna non la rispetta → l'utente ottiene risultati inaspettati.
+
+9. ORDINE DEI BIT POTENZIALMENTE CONFUSIONARIO
+   - Sebbene l'ordine (A[0] = LSB) sia coerente internamente, la mescolanza di
+     notazioni (A3 A2 A1 A0 in input vs array con indice crescente) può generare
+     errori di interpretazione. Tuttavia, non è un bug tecnico.
+
+--------------------------------------------------------------------------------
+CONCLUSIONE E RACCOMANDAZIONI
+--------------------------------------------------------------------------------
+
+Il codice presenta BUG CRITICI che ne compromettono l'affidabilità:
+- Non implementa correttamente la logica del 74181.
+- Il flag di uguaglianza è fondamentalmente errato.
+- I risultati aritmetici/logici non corrispondono alle specifiche.
