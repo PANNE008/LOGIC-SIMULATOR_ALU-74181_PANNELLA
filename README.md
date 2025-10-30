@@ -21,3 +21,6 @@ Il **74181**, introdotto nel 1970 da Texas Instruments, è stata la prima **unit
 - **Il progetto è stato sviluppato da**: Cesare Mezzani, Fabio Musacco, Jacopo Pannella e Lorenzo Santin.
 - **Licenza:** [Gnu General Public License](https://github.com/PANNE008/LOGIC-SIMULATOR_ALU-74181_PANNELLA/blob/main/LICENSE)
 
+## Link Associati
+
+[Manuale di Guida]
