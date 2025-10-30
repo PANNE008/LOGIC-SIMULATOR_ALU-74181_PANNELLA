@@ -1,16 +1,166 @@
-# Funzioni del simulatore
+DOCUMENTAZIONE DEL CODICE ALU (UNITÀ LOGICO-ARITMETICA)
 
-In questo testo sono presenti tutte le funzioni del simulatore:
+Questo programma implementa un'ALU (Arithmetic Logic Unit) a 4 bit e a 32 bit,
+basata sul funzionamento del chip 74181, con funzioni logiche e aritmetiche
+controllate da segnali di selezione (S0-S3), un segnale di modalità (M) e un
+carry-in iniziale (Cn).
 
-- **Ritardo(int cicli)**: Funzione che simula un'attesa tramite loop vuoto.
-- **Registro4bit**: Struttura dati che rappresenta 8 registri da 4 bit.
-- **AggiornaRegistro(...)**: Simula un flip-flop D per registri a 4 bit con supporto a caricamento parallelo, shift a sinistra e a destra.
-- **DividiInRegistri(unsigned int val, Registro4bit reg[8])**: Divide un numero a 32 bit in 8 registri da 4 bit.
-- **UnisciRegistri(Registro4bit reg[8])**: Ricompone un intero da 32 bit a partire dagli 8 registri da 4 bit.
-- **StampaBinario(unsigned int num)**: Stampa un numero a 32 bit in formato binario (separato ogni 4 bit).
-- **Main()**: Contiene l'intera logica:
-  - Input da tastiera: A, B, modalità operativa, segnali S1/S0, segnali della ALU.
-  - Comportamento dei registri (clear, caricamento, shift).
-  - Simulazione dell’ALU in modalità logica o aritmetica.
-  - Output dei registri e del risultato finale.
+--------------------------------------------------------------------------------
+1. FUNZIONI LOGICHE DI BASE
+--------------------------------------------------------------------------------
 
+int AND(int a, int b)
+  - Restituisce il risultato dell'operazione logica AND tra due bit (0 o 1).
+  - Implementata come moltiplicazione: a * b.
+
+int NOT(int a)
+  - Restituisce il complemento logico di un bit.
+  - Implementata come: 1 - a.
+
+int OR(int a, int b)
+  - Restituisce il risultato dell'operazione logica OR.
+  - Formula: a + b - (a * b) → evita overflow (1+1=1).
+
+int EXOR(int a, int b)
+  - Restituisce il risultato dell'operazione XOR.
+  - Formula: (1 - a) * b + a * (1 - b).
+
+int NAND(int a, int b)
+  - NOT(AND(a, b)).
+
+int NOR(int a, int b)
+  - NOT(OR(a, b)).
+
+int EXNOR(int a, int b)
+  - NOT(EXOR(a, b)).
+
+--------------------------------------------------------------------------------
+2. FUNZIONI LOGICHE A PIÙ INGRESSI
+--------------------------------------------------------------------------------
+
+int AND_3(int a, int b, int c)
+  - AND(a, AND(b, c))
+
+int AND_4(int a, int b, int c, int d)
+  - AND(a, AND(b, AND(c, d)))
+
+int AND_5(...)
+  - Estensione a 5 ingressi.
+
+int OR_3, OR_4
+  - OR annidati per 3 o 4 ingressi.
+
+int NOR_3, NOR_4
+  - NOR annidati (NOT di OR annidati).
+
+int NAND_4, NAND_5
+  - NAND annidati.
+
+--------------------------------------------------------------------------------
+3. ALU A 4 BIT: ALU_4_BIT()
+--------------------------------------------------------------------------------
+
+void ALU_4_BIT(
+    int A0-A3, B0-B3,        // Input A e B (bit 0 = LSB)
+    int S0-S3,               // Selezione operazione
+    int M,                   // Modalità: M=1 → logica, M=0 → aritmetica
+    int Cn,                  // Carry-in (per operazioni aritmetiche)
+    int *G_out,              // Generate (per carry lookahead)
+    int *Cn_piu_4_out,       // Carry-out del blocco (Cn+4)
+    int *P_out,              // Propagate (per carry lookahead)
+    int *F3-F0_out,          // Output F[3:0]
+    int *A_uguale_B_out,     // 1 se A == B (tutti i bit di F = 1)
+    int *G0-G3_out, P0-P3_out // Segnali interni di Generate/Propagate per ogni bit
+)
+
+Funzionalità:
+- Implementa le 16 operazioni logiche/aritmetiche del 74181.
+- Calcola i segnali G (generate) e P (propagate) per il carry lookahead.
+- L'output F dipende da S[3:0], M e Cn.
+- A_uguale_B è 1 solo se tutti i bit di F sono 1 (condizione di uguaglianza).
+
+Note:
+- I bit sono passati in ordine A0 (LSB) a A3 (MSB).
+- La logica interna replica il funzionamento del chip 74181 usando solo
+  porte logiche simulate con funzioni aritmetiche.
+
+--------------------------------------------------------------------------------
+4. CONVERSIONI BINARIO/DECIMALE
+--------------------------------------------------------------------------------
+
+void decimalToBinary32bit(uint32_t n)
+  - Converte un numero decimale (0–4294967295) in una stringa binaria a 32 bit.
+  - Stampa il risultato con bit più significativo a sinistra.
+
+uint32_t binaryToDecimal(const char *binaryString)
+  - Converte una stringa binaria di 32 caratteri ('0'/'1') in un intero senza segno.
+  - Controlla la lunghezza e la validità dei caratteri.
+
+uint32_t convertiBinario4BitInDecimale(const char *stringaBinaria)
+  - Versione per 4 bit (usata internamente, ma non attualmente richiamata nel main).
+
+--------------------------------------------------------------------------------
+5. ALU A 32 BIT: ALU_32_BIT_Corrected()
+--------------------------------------------------------------------------------
+
+void ALU_32_BIT_Corrected(
+    int A[32], B[32],        // Input a 32 bit (A[0] = LSB)
+    int S0-S3, M, Cn_initial,
+    int F[32],               // Output a 32 bit (F[0] = LSB)
+    int *Final_G, *Final_P, *Final_Cn_piu_32,
+    int *Final_A_uguale_B
+)
+
+Funzionalità:
+- Compone 8 blocchi ALU_4_BIT in cascata.
+- Il carry-out di ogni blocco diventa il carry-in del successivo.
+- Final_G e Final_P si riferiscono all'ultimo blocco (bit 28-31).
+- Final_A_uguale_B è 1 solo se TUTTI i 32 bit di F sono 1.
+- Il risultato F è costruito bit per bit.
+
+Note:
+- Non implementa un vero carry-lookahead a 32 bit, ma un ripple-carry tra blocchi.
+- L'uguaglianza A == B è approssimata come (F == 0xFFFFFFFF), valida solo per
+  alcune operazioni (es. sottrazione con Cn=1).
+
+--------------------------------------------------------------------------------
+6. UTILITIES
+--------------------------------------------------------------------------------
+
+void delay(int number_of_seconds)
+  - Crea un ritardo attivo usando clock() (non preciso, solo per simulazione).
+
+--------------------------------------------------------------------------------
+7. FUNZIONE MAIN()
+--------------------------------------------------------------------------------
+
+Il programma offre un menu interattivo con le seguenti opzioni:
+
+1. ALU a 4 BIT:
+   - Inserimento manuale di A[3:0], B[3:0], S[3:0], M, Cn.
+   - Stampa F, G, P, Cn+4, e A=B.
+
+2. ALU a 32 BIT:
+   - Inserimento di due numeri decimali (0–2^32-1).
+   - Conversione automatica in bit (LSB in A[0]).
+   - Esecuzione dell'ALU a 32 bit.
+   - Stampa del risultato in binario (MSB a sinistra) e decimale.
+
+3. OPERAZIONI ARITMETICHE:
+   - Somma o sottrazione semplice di due interi (non usa l'ALU).
+
+4. CONVERTITORE DECIMALE → BINARIO (32 bit)
+
+5. CONVERTITORE BINARIO → DECIMALE (32 bit)
+
+L'utente può scegliere il "tempo di ritardo" all'avvio (non usato in modo critico).
+
+--------------------------------------------------------------------------------
+NOTE GENERALI
+--------------------------------------------------------------------------------
+
+- Tutti i valori logici sono rappresentati con int (0 = falso, 1 = vero).
+- L'ALU simula hardware digitale usando operazioni aritmetiche su interi.
+- Il programma non gestisce overflow aritmetico esplicitamente.
+- L'uguaglianza A == B è calcolata come (F == 1111...1111), corretta solo
+  per operazioni che producono tutti 1 in caso di uguaglianza (es. A - B con Cn=1).
