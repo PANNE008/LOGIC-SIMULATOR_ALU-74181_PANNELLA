@@ -1,4 +1,4 @@
-## 🛠️ Bug trovati e risolti
+ Bug trovati e risolti
 
 Durante le fasi di test e revisione, sono stati individuati e corretti diversi problemi critici che compromettevano il corretto funzionamento del sistema:
 
@@ -8,6 +8,6 @@ Durante le fasi di test e revisione, sono stati individuati e corretti diversi p
 - **Errori nei convertitori:** Problemi di conversione tra formati numerici (es. binario-decimale) generavano risultati inattesi.
 - **Errori grafici:** Alcuni elementi visivi non venivano renderizzati correttamente, compromettendo l'usabilità dell'interfaccia.
 
-## 🔍 Bug attualmente da risolvere
+Bug attualmente da risolvere
 
 - Nessun bug noto al momento. Il sistema è stabile e funzionale secondo gli ultimi test effettuati.
