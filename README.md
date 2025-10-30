@@ -21,4 +21,4 @@ Il progetto va oltre una semplice emulazione: è un ambiente pensato per **impar
 ## Autori e licenza
 
 Il progetto è **open-source** ed è stato sviluppato in collaborazione da diversi contributori.
-```
+
