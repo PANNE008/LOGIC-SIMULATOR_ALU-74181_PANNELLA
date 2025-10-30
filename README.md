@@ -21,5 +21,5 @@ Il progetto va oltre una semplice emulazione: è un ambiente pensato per **impar
 ## Autori e licenza
 
 - **Il progetto è stato sviluppato da**: Cesare Mezzani, Fabio Musacco, Jacopo Pannella e Lorenzo Santin.
-- **Licenza:**[GNU GENERAL PUBLIC LICENSE](https://github.com/PANNE008/LOGIC-SIMULATOR_ALU-74181_PANNELLA/blob/main/LICENSE)
+- **Licenza:** [GNU GENERAL PUBLIC LICENSE](https://github.com/PANNE008/LOGIC-SIMULATOR_ALU-74181_PANNELLA/blob/main/LICENSE)
 
