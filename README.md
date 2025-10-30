@@ -1,8 +1,6 @@
 # Simulatore ALU 74181
 
-Questo simulatore replica in modo preciso il funzionamento del chip **74181**, una delle prime ALU (Arithmetic Logic Unit) integrate, sviluppata da Texas Instruments negli anni '70. Il 74181 è un componente storico: ha reso possibile la realizzazione di CPU modulari e più complesse, segnando una svolta nell’evoluzione dei computer.
-
-Il progetto va oltre una semplice emulazione: è un ambiente pensato per **imparare**, **sperimentare** e **progettare** a partire dalle basi dell’elaborazione digitale, offrendo una visione chiara di come vengono eseguite operazioni aritmetiche e logiche a livello hardware.
+Il **74181**, introdotto nel 1970 da Texas Instruments, è stata la prima **unità logica aritmetica** (ALU) completa su un singolo chip. Questo chip TTL a 4 bit ha rappresentato un anello di congiunzione tra le CPU a porte logiche discrete degli anni '60 e i microprocessori degli anni '70, essendo il cuore di molti minicomputer. Nonostante non sia più in uso commerciale, rimane un importante riferimento didattico nell'architettura dei computer.
 
 ## Caratteristiche tecniche
 
