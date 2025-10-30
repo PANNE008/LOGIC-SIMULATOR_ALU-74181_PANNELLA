@@ -1,6 +1,6 @@
---------------------------------------------------------------------------------
-BUG CRITICI (IMPEDISCONO IL CORRETTO FUNZIONAMENTO DELL'ALU)
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+BUG CHE IMPEDISCONO IL CORRETTO FUNZIONAMENTO DELL'ALU (Situati nell'Alu_Finale.c)
+------------------------------------------------------------------------------------
 
 1. LOGICA ERRATA DEI SEGNALI P (PROPAGATE) E G (GENERATE) NELL'ALU_4_BIT
    - I segnali P e G sono calcolati con espressioni non conformi allo standard del 74181.
