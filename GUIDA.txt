@@ -120,19 +120,6 @@ Simula un’ALU a 32 bit usando 8 blocchi di ALU a 4 bit collegati in cascata (c
 - Cn = `1`
 - Risultato: `F = 75` (in decimale)
 
----
-
- Domande frequenti
-
-Q: Perché il risultato a volte è negativo?  
-R: Il programma usa numeri senza segno, quindi non mostra valori negativi. Se il risultato è troppo grande, va in overflow (es. 4000000000 + 4000000000 → numero grande, ma positivo).
-
-Q: Cosa sono G e P?  
-R: Sono segnali usati nei circuiti carry-lookahead per accelerare il calcolo del carry. Non influenzano direttamente F, ma sono importanti per l’architettura hardware.
-
-Q: Posso usare numeri negativi?  
-R: No, il programma lavora solo con interi senza segno. Per i negativi, dovresti usare il complemento a 2, ma non è supportato direttamente.
-
 
  Conclusione
 
