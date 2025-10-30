@@ -23,4 +23,5 @@ Il **74181**, introdotto nel 1970 da Texas Instruments, è stata la prima **unit
 
 ## Link Associati
 
-[Manuale di Guida]
+[Manuale di Guida](https://github.com/PANNE008/LOGIC-SIMULATOR_ALU-74181_PANNELLA/blob/main/GUIDA.txt)
+[Schema alu 74181 a 32 bit](https://github.com/PANNE008/LOGIC-SIMULATOR_ALU-74181_PANNELLA/blob/main/Schema-a-blocchi-dell'ALU-74181-a-32-bit.jpeg)
