@@ -29,6 +29,6 @@ Il **74181**, introdotto nel 1970 da Texas Instruments, è stata la prima **unit
 
 -[**Codice Dell'Alu a 32 bit in linguaggio C**](https://github.com/PANNE008/LOGIC-SIMULATOR_ALU-74181_PANNELLA/blob/main/Alu_Finale.c)
 
--[**I Bug ritrovati nel codice**]()
+-[**I Bug ritrovati nel codice**](https://github.com/PANNE008/LOGIC-SIMULATOR_ALU-74181_PANNELLA/blob/main/BUG.txt)
 
 -[**Datasheet dell'Alu 74181**](https://github.com/PANNE008/LOGIC-SIMULATOR_ALU-74181_PANNELLA/blob/main/datasheet-74181-operations.png)
