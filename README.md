@@ -20,5 +20,6 @@ Il progetto va oltre una semplice emulazione: è un ambiente pensato per **impar
 
 ## Autori e licenza
 
-Il progetto è **open-source** ed è stato sviluppato in collaborazione da diversi contributori.
+- **Il progetto è stato sviluppato da**: Cesare Mezzani, Fabio Musacco, Jacopo Pannella e Lorenzo Santin.
+- [**Licenza:**](https://github.com/PANNE008/LOGIC-SIMULATOR_ALU-74181_PANNELLA/blob/main/LICENSE)
 
