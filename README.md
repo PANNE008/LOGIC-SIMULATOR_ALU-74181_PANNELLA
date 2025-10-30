@@ -8,7 +8,7 @@ Il progetto va oltre una semplice emulazione: è un ambiente pensato per **impar
 
 - Simulazione completa dell’ALU 74181 a **4 bit**  
 - Estensione a **32 bit** tramite collegamento in cascata, come avviene nelle CPU reali  
-- Registri **PIPO** (Parallel-In/Parallel-Out) implementati con flip-flop SR  
+- Registri **PIPO** (Parallel-In/Parallel-Out) implementati con flip-flop SR(Non sono implementati nel nostro lavoro)
 - Rilevamento automatico della CPU host e stima della frequenza di clock per simulare i cicli temporali  
 - Compatibilità **multipiattaforma**: funziona su **Windows**, **Linux** e **macOS**
 
