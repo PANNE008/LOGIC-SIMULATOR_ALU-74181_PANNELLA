@@ -1,3 +1,6 @@
+--------------------------------------------------------------------------------
+TUTTE LE FUNZIONI DELL'ALU 74181(Integrate nell'Alu_Finale.c)
+--------------------------------------------------------------------------------
 Questo programma implementa un'ALU (Arithmetic Logic Unit) a 4 bit e a 32 bit,
 basata sul funzionamento del chip 74181, con funzioni logiche e aritmetiche
 controllate da segnali di selezione (S0-S3), un segnale di modalità (M) e un
