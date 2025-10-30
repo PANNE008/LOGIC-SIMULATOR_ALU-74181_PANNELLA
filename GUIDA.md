@@ -7,25 +7,25 @@ Questo codice C simula il comportamento di una ALU (Unità Aritmetico Logica) 74
 
 STRUTTURA PRINCIPALE:
 ------------------------------
-1. **ritardo(int cicli)**:
+1.  ritardo(int cicli) :
    - Funzione che simula un'attesa tramite loop vuoto.
 
-2. **Registro4bit**:
+2.  Registro4bit :
    - Struttura dati che rappresenta 8 registri da 4 bit.
 
-3. **aggiornaRegistro(...)**:
+3.  aggiornaRegistro(...) :
    - Simula un flip-flop D per registri a 4 bit con supporto a caricamento parallelo, shift a sinistra e a destra.
 
-4. **dividiInRegistri(unsigned int val, Registro4bit reg[8])**:
+4.  dividiInRegistri(unsigned int val, Registro4bit reg[8]) :
    - Divide un numero a 32 bit in 8 registri da 4 bit.
 
-5. **unisciRegistri(Registro4bit reg[8])**:
+5.  unisciRegistri(Registro4bit reg[8]) :
    - Ricompone un intero da 32 bit a partire dagli 8 registri da 4 bit.
 
-6. **stampaBinario(unsigned int num)**:
+6.  stampaBinario(unsigned int num) :
    - Stampa un numero a 32 bit in formato binario (separato ogni 4 bit).
 
-7. **main()**:
+7.  main() :
    - Contiene l'intera logica:
      - Input da tastiera: A, B, modalità operativa, segnali S1/S0, segnali della ALU.
      - Comportamento dei registri (clear, caricamento, shift).
