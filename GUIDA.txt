@@ -1,6 +1,6 @@
-------------------------------------------
+----------------------------------------------------------------------------------
 GUIDA ALL'UTILIZZO CORRETTO DEL CODICE
-------------------------------------------
+----------------------------------------------------------------------------------
 Questo programma simula un’ALU (Arithmetic Logic Unit) a 4 bit e 32 bit, come quelle usate nei processori reali (es. il famoso chip 74181).  
 Permette di eseguire operazioni logiche (AND, OR, XOR, ecc.) e aritmetiche (somma, sottrazione, complemento a 2, ecc.) su numeri binari.
 
