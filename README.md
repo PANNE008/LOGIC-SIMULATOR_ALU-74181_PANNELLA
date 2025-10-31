@@ -37,6 +37,3 @@ Il **74181**, introdotto nel 1970 da Texas Instruments, è stata la prima **unit
 -[**I Bug ritrovati nel codice**](https://github.com/PANNE008/LOGIC-SIMULATOR_ALU-74181_PANNELLA/blob/main/BUG.txt)
 
 -[**Datasheet dell'Alu 74181**](https://github.com/PANNE008/LOGIC-SIMULATOR_ALU-74181_PANNELLA/blob/main/datasheet-74181-operations.png)
-
-
-**Ultimo aggiornamento:** 31 ottobre 2025
