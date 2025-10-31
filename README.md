@@ -1,6 +1,6 @@
 **Comunicazione del gruppo di lavoro**
 
-Prima di illustrare il funzionamento dell’ALU 74181, il team segnala che, a seguito di un’attenta revisione del codice *Alu_prova.c*, è stata adottata una versione aggiornata e migliorata, denominata **Alu_Finale.c**. Quest’ultima risulta più ottimizzata e presenta un numero ridotto di errori rispetto alla precedente.
+Prima di illustrare il funzionamento generale dell’ALU 74181, il team segnala che, a seguito di un’attenta revisione del codice *Alu_prova.c*, è stata adottata una versione aggiornata e migliorata, denominata **Alu_Finale.c**. Quest’ultima risulta più ottimizzata e presenta un numero ridotto di errori rispetto alla precedente.
 Il file originale *Alu_prova.c* è stato comunque conservato per completezza e trasparenza, al fine di documentare l’intero percorso di sviluppo del progetto.
 
 
