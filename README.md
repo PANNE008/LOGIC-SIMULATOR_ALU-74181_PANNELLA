@@ -1,6 +1,11 @@
-# Simulatore ALU 74181
+**Comunicazione del gruppo di lavoro**
 
-Il **74181**, introdotto nel 1970 da Texas Instruments, è stata la prima **unità logica aritmetica** (ALU) completa su un singolo chip. Questo chip TTL a 4 bit ha rappresentato un anello di congiunzione tra le CPU a porte logiche discrete degli anni '60 e i microprocessori degli anni '70, essendo il cuore di molti minicomputer. Nonostante non sia più in uso commerciale, rimane un importante riferimento didattico nell'architettura dei computer.
+Prima di illustrare il funzionamento dell’ALU 74181, il team segnala che, a seguito di un’attenta revisione del codice *Alu_prova.c*, è stata adottata una versione aggiornata e migliorata, denominata **Alu_Finale.c**. Quest’ultima risulta più ottimizzata e presenta un numero ridotto di errori rispetto alla precedente.
+Il file originale *Alu_prova.c* è stato comunque conservato per completezza e trasparenza, al fine di documentare l’intero percorso di sviluppo del progetto.
+
+
+# Simulatore ALU 74181
+Il **74181**, introdotto nel 1970 da Texas Instruments, è stata la prima **unità logica aritmetica** (ALU) completa su un singolo chip. Questo chip TTL a 4 bit ha rappresentato un anello di congiunzione tra le CPU a porte logiche discrete degli anni '60 e i microprocessori degli anni '70, essendo il cuore di molti minicomputer. Nonostante non sia più in uso commerciale, rimane un importante riferimento didattico nell'architettura dei computer. 
 
 ## Caratteristiche tecniche
 
